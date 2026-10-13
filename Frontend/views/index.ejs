@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellowgreen;
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 4px 0;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <p>HELLO FROM THE FRONTEND</p>
+
+    <ul>
+        <% if (locals.data && data.length > 0) { %>
+            <% data.forEach((name, index) => { %>
+                <li><%= index + 1 %> <%= name %></li>
+            <% }); %>
+        <% } else { %>
+            <li>No data available</li>
+        <% } %>
+    </ul>
+</body>
+</html>

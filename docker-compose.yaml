@@ -1,0 +1,36 @@
+version: '3.6'
+
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
+    hostname: backend-host
+    volumes:
+      - ./Backend:/app
+    ports:
+      - "8000:8000"
+    networks:
+      ares-network:
+        aliases:
+          - backend-host
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    hostname: frontend-host
+    volumes:
+      - ./Frontend:/app
+    environment:
+      - BACKEND_URL=http://backend-host:8000/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - ares-network
+
+networks:
+  ares-network: {}
